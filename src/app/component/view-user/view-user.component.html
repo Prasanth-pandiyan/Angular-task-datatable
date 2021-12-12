@@ -1,0 +1,17 @@
+<div class="container view">
+    <div class="button-div">
+        <button type="button" class="btn btn-primary" routerLink="/view">List Data</button>
+    </div>
+    <div class="view-data">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{viewdata.firstname}} {{viewdata.lastname}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{viewdata.email}}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">{{viewdata.mobileno}}</h6>
+              <p class="card-subtitle mb-2 text-muted">{{viewdata.address}}</p>
+              <p class="card-subtitle mb-2 text-muted">{{viewdata.city}}, {{viewdata.state}}, {{viewdata.country}}</p>
+              <p class="card-subtitle mb-2 text-muted">{{viewdata.lat}}, {{viewdata.lng}}</p>
+            </div>
+          </div>
+    </div>
+</div>

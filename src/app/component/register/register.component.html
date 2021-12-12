@@ -1,0 +1,95 @@
+<div class="container register-form">
+    <div class="button-div">
+        <button type="button" class="btn btn-primary" routerLink="/view">List Data</button>
+    </div>
+    <form [formGroup]="RegisterForm">
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" placeholder="Enter firstname here.." formControlName="firstname">
+            <div *ngIf="RegisterForm.controls['firstname'].invalid && (RegisterForm.controls['firstname'].dirty || RegisterForm.controls['firstname'].touched)"
+                class="alert">
+                <div *ngIf="RegisterForm.controls['firstname'].errors.required">
+                    Please enter First Name
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" placeholder="Enter lastname here.." formControlName="lastname">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email Id</label>
+            <input type="email" class="form-control" placeholder="Enter email here.." formControlName="email">
+            <div *ngIf="RegisterForm.controls['email'].invalid && (RegisterForm.controls['email'].dirty || RegisterForm.controls['email'].touched)"
+                class="alert">
+                <div *ngIf="RegisterForm.controls['email'].errors.required">
+                    Please enter Email Id
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mobile No</label>
+            <input type="text" class="form-control" placeholder="Enter mobile no here.." formControlName="mobileno" maxlength="10" (keypress)="numberOnly($event)">
+            <div *ngIf="RegisterForm.controls['mobileno'].invalid && (RegisterForm.controls['mobileno'].dirty || RegisterForm.controls['mobileno'].touched)"
+                class="alert">
+                <div *ngIf="RegisterForm.controls['mobileno'].errors.required">
+                    Please Select Mobile
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Country</label>
+            <select class="form-select" formControlName="country" placeholder="Select Country" (change)="getstate()">
+                <option selected disabled value="">Select Country</option>
+                <option *ngFor="let country of country" [value]="country.country_name">{{country.country_name}}</option>
+            </select>
+            <div *ngIf="RegisterForm.controls['country'].invalid && (RegisterForm.controls['country'].dirty || RegisterForm.controls['country'].touched)"
+                class="alert">
+                <div *ngIf="RegisterForm.controls['country'].errors.required">
+                    Please enter Country
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">State</label>
+            <select class="form-select" formControlName="state" placeholder="Select State" (change)="getcities()">
+                <option selected disabled value="">Select State</option>
+                <option *ngFor="let state of state" [value]="state.state_name">{{state.state_name}}</option>
+            </select>
+            <div *ngIf="RegisterForm.controls['state'].invalid && (RegisterForm.controls['state'].dirty || RegisterForm.controls['state'].touched)"
+                class="alert">
+                <div *ngIf="RegisterForm.controls['state'].errors.required">
+                    Please enter State
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">City</label>
+            <select class="form-select" formControlName="city" placeholder="Select City">
+                <option selected disabled value="">Select City</option>
+                <option *ngFor="let city of city" [value]="city.city_name">{{city.city_name}}</option>
+            </select>
+            <div *ngIf="RegisterForm.controls['city'].invalid && (RegisterForm.controls['city'].dirty || RegisterForm.controls['city'].touched)"
+                class="alert">
+                <div *ngIf="RegisterForm.controls['city'].errors.required">
+                    Please enter City
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <textarea class="form-control" rows="3" placeholder="Enter address here.."
+                formControlName="address"></textarea>
+                <!-- <input ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/> -->
+        </div>
+        <div class="submit-btn">
+            <button *ngIf="edit==false" type="button" class="btn btn-primary" [disabled]="!RegisterForm.valid" (click)="formsubmit()">Add</button>
+            <button *ngIf="edit==true" type="button" class="btn btn-primary" [disabled]="!RegisterForm.valid" (click)="formsubmit()">Edit</button>
+        </div>
+    </form>
+</div>
+
+<!-- <agm-map style="height:500px" [zoom]='19' [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>  -->
+  <!-- <div id="map"></div> -->

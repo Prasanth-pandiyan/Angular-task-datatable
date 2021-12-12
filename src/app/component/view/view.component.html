@@ -1,0 +1,47 @@
+<div class="container view-form">
+  <div class="button-div">
+    <div>
+      <input type="text" class="form-control" placeholder="Filter data table" [(ngModel)]="filterdata" (ngModelChange)="filter()">
+    </div>
+    <span></span>
+    <div>
+      <button type="button" class="btn btn-primary" routerLink="/">Add</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">S No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Country</th>
+            <th scope="col">Coordinates</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of formdata;let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{data.firstname}} {{data.lastname}}</td>
+            <td>{{data.mobileno}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.address}}</td>
+            <td>{{data.city}}</td>
+            <td>{{data.state}}</td>
+            <td>{{data.country}}</td>
+            <td>{{data.lat}}, {{data.lng}}</td>
+            <td><span (click)="edit(i)"><img src="./assets/img/edit.png"></span><span (click)="view(i)"><img src="./assets/img/view.png"></span><span
+                (click)="delete(i)"><img src="./assets/img/delete.png"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p *ngIf="formdata.length==0">{{message}}</p>
+  </div>
+</div>
